@@ -1,10 +1,11 @@
-`plot.p3state`<-function (x, plot.trans = NULL, plot.marginal = NULL, plot.bivariate = NULL, 
-    time1, time2, xlab, ylab, zlab, col, ...) 
+plot.p3state<-function (x, plot.trans = NULL, plot.marginal = NULL, plot.bivariate = NULL,
+ time1, time2, xlab, ylab, zlab, col, col.biv = NULL,...) 
 {
     if (missing(x)) 
         stop("Argument 'x' is missing with no default")
     if (!inherits(x, "p3state")) 
         stop("'x' must be of class 'p3state'")
+     
     mydata <- x$datafr
     xlab.aux <- FALSE
     ylab.aux <- FALSE
@@ -23,6 +24,8 @@
         plot.marginal <- FALSE
     if (missing(plot.bivariate)) 
         plot.bivariate <- FALSE
+    if (missing(col.biv)) 
+        col.biv <- FALSE
     if (missing(time1)) 
         time1 <- 0
     if (missing(time2)) 
@@ -55,7 +58,8 @@
             mydata2[k, 1] <- y[k]
         }
         for (k in 1:length(y)) {
-            mydata2[k, 2] <- pLIDA(mydata, time1, mydata2[k,1],tp="p11")
+            mydata2[k, 2] <- pLIDA(mydata, time1, mydata2[k, 
+                1], tp = "p11")
         }
         if (ylab.aux == TRUE) 
             ylab <- paste("Estimated prob. p11(", time1, ",t)")
@@ -75,7 +79,8 @@
             mydata2[k, 1] <- y[k]
         }
         for (k in 1:length(y)) {
-            mydata2[k, 2] <- pLIDA(mydata, time1, mydata2[k,1],tp="p12")
+            mydata2[k, 2] <- pLIDA(mydata, time1, mydata2[k, 
+                1], tp = "p12")
         }
         if (ylab.aux == TRUE) 
             ylab <- paste("Estimated prob. p12(", time1, ",t)")
@@ -97,7 +102,8 @@
             mydata2[k, 1] <- y[k]
         }
         for (k in 1:length(y)) {
-            mydata2[k, 2] <- pLIDA(mydata, time1, mydata2[k,1],tp="p22")
+            mydata2[k, 2] <- pLIDA(mydata, time1, mydata2[k, 
+                1], tp = "p22")
         }
         if (ylab.aux == TRUE) 
             ylab <- paste("Estimated prob. p22(", time1, ",t)")
@@ -158,23 +164,27 @@
         persp(x1, y1, z, theta = 30, phi = 30, ticktype = "detailed", 
             expand = 0.5, xlab = xlab, ylab = ylab, zlab = zlab, 
             col = col, shade = 0.2, ...)
-
-	oask <- devAskNewPage(TRUE)						#changed
-        on.exit(devAskNewPage(oask))						#changed
-
-	#x1 <- seq(0,max(mydata[,1]),length.out=30)				#changed
-        #y1 <- seq(0,max(mydata[,3]),length.out=30)				#changed
-	x1 <- seq(0,max(mydata[mydata[,5]==1,1])*1.25,length.out=30)		#changed
-	y1 <- seq(0,max(mydata[mydata[,5]==1,3])*1.25,length.out=30)		#changed
-
-	data<-expand.grid(x1,y1)						#changed
-	z<-seq(0,1,length.out=900)						#changed
-	for (k in 1:900) z[k]<-Biv(mydata,data[k,1],data[k,2])			#changed
-	#z1<-matrix(Biv(mydata,data[,1],data[,2]), 30)				#changed
-	z1<-matrix(z, 30)							#changed
-	filled.contour(x1,y1,z1,xlab="Time in state 1", ylab="Time in state 2")	#changed
-
-
+        oask <- devAskNewPage(TRUE)
+        on.exit(devAskNewPage(oask))
+        x1 <- seq(0, max(mydata[mydata[, 5] == 1, 1]) * 1.25, 
+            length.out = 30)
+        y1 <- seq(0, max(mydata[mydata[, 5] == 1, 3]) * 1.25, 
+            length.out = 30)
+        data <- expand.grid(x1, y1)
+        z <- seq(0, 1, length.out = 900)
+        for (k in 1:900) z[k] <- Biv(mydata, data[k, 1], data[k, 
+            2])
+        z1 <- matrix(z, 30)
+        
+        if (col.biv == FALSE) {
+        bw <- colours()[350-3*0:19]
+        filled.contour(x1, y1, z1, xlab = "Time in state 1", 
+            ylab = "Time in state 2",col = bw, ...)   }
+              
+        else {
+        filled.contour(x1, y1, z1, xlab = "Time in state 1", 
+            ylab = "Time in state 2", ...) }   
+            
     }
     if (ntrans == 3 & pmar == TRUE) 
         cat("The plot for the marginal distribution of the second time cannot be given for the illness-death model", 
@@ -183,4 +193,6 @@
         cat("The plot for the bivariate distribution function cannot be given for the illness-death model", 
             "\n")
 }
+
+
 

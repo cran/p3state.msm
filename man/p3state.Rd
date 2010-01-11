@@ -33,9 +33,13 @@ p3state(data, coxdata = NULL, formula = NULL, regression = NULL)
 }
 \references{ 
 Meira-Machado L, De Una-Alvarez J, Cadarso-Suarez C (2006). "Nonparametric estimation of transition probabilities in a non-Markov illness-death model." Lifetime Data Analysis, 12, 325-344.
+
 de Una-Alvarez J, Meira-Machado LF (2008). A simple estimator of the bivariate distribution function for censored gap times. Statistics & Probability Letters, 78: 2440-2445.
+
+Meira-Machado l, Roca-Pardinas J (2011). "p3state.msm: Analyzing Survival Data from an Illness-Death Model." Journal of Statistical Software, 38(3): 1-18.
 }
-\author{ Luis Felipe Meira-Machado and Javier Roca-Pardinas }
+
+\author{ Luis Meira-Machado and Javier Roca-Pardinas }
 
 \examples{
 data(heart2)
