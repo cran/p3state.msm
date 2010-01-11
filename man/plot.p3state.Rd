@@ -26,22 +26,9 @@ plot.bivariate = NULL, time1, time2, xlab, ylab, zlab, col, ...)
 
 
 
-%\details{
-%  ~~ If necessary, more details than the description above ~~
-%}
-%\value{
-%  ~Describe the value returned
-%  If it is a LIST, use
-%  \item{comp1 }{Description of 'comp1'}
-%  \item{comp2 }{Description of 'comp2'}
-%  ...
-%}
-%\references{ ~put references to the literature/web site here ~ }
-\author{ Luis Felipe Meira-Machado and Javier Roca-Pardinas }
-%\note{ ~~further notes~~ 
 
-% ~Make other sections like Warning with \section{Warning }{....} ~
-%}
+\author{ Luis Felipe Meira-Machado and Javier Roca-Pardinas }
+
 \seealso{ \code{\link{p3state}}}
 \examples{
 data(heart2)
@@ -57,5 +44,3 @@ plot(res2.p3state,plot.trans="all",time1=20,
 time2=200,plot.bivariate=TRUE,plot.marginal=TRUE)
 
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
