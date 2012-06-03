@@ -1,12 +1,12 @@
 \name{summary.p3state}
 \alias{summary.p3state}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{ Summary Methods for an p3state Object}
+\title{Summary Methods for an p3state Object}
 \description{
   Provides results for an object of class \code{p3state}. It gives the estimated transition probabilities, bivariate distribution of the gap times and marginal distribution of the second gap time (the last two only available for the progressive three-state model). Provides also the results for the fit of semi-parametric Cox regression models.
 }
 \usage{
-summary.p3state(object, model = NULL, covmat = NULL, 
+\method{summary}{p3state}(object, model = NULL, covmat = NULL,
 estimate = NULL, time1 = NULL, time2 = NULL, ...)
 }
 %- maybe also 'usage' for other objects documented here.
@@ -31,7 +31,7 @@ estimate = NULL, time1 = NULL, time2 = NULL, ...)
 %}
 %\references{ ~put references to the literature/web site here ~ }
 \author{Luis Meira-Machado and Javier Roca-Pardinas   }
-%\note{ ~~further notes~~ 
+%\note{ ~~further notes~~
 %
 % ~Make other sections like Warning with \section{Warning }{....} ~
 %}
@@ -43,4 +43,3 @@ summary(res.p3state,model="CMM",time1=20,time2=100)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
-

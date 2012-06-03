@@ -6,7 +6,7 @@
 Plot method for an object of class 'p3state'. It draws the estimated transition probabilities, bivariate distribution of the gap times and marginal distribution of the second gap time (the last two only available for the progressive three-state model)
 }
 \usage{
-plot.p3state(x, plot.trans = NULL, plot.marginal = NULL, 
+\method{plot}{p3state}(x, plot.trans = NULL, plot.marginal = NULL,
 plot.bivariate = NULL, time1, time2, xlab, ylab, zlab, col, col.biv = NULL, ...)
 }
 %- maybe also 'usage' for other objects documented here.
@@ -20,7 +20,7 @@ plot.bivariate = NULL, time1, time2, xlab, ylab, zlab, col, col.biv = NULL, ...)
   \item{xlab}{x-axix label. }
   \item{ylab}{y-axix label. }
   \item{zlab}{z-axix label (only for the bivariate distribution).}
-  \item{col}{Colour for the bivariate plot.} 
+  \item{col}{Colour for the bivariate plot.}
   \item{col.biv}{A logical variable indicating whether you want color to be used in the filled.contour plot. By default col.biv = FALSE.}
  \item{\dots}{Further arguments for plot }
 }
