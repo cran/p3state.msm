@@ -1,20 +1,46 @@
-citHeader("To cite p3state.msm in publications use:")
+PKG <- "p3state.msm";
 
-citEntry(entry = "Article",
-  title        = "{p3state.msm}: Analyzing Survival Data from an Illness-Death Model",
-  author       = personList(as.person("Lu\\'{\\i}s Meira-Machado"),
-                   as.person("Javier Roca Pardi\\~{n}as")),
-  journal      = "Journal of Statistical Software",
-  year         = "2011",
-  volume       = "38",
-  number       = "3",
-  pages        = "1--18",
-  url          = "http://www.jstatsoft.org/v38/i03/",
+citHeader(
+  paste("To cite the R package", PKG, "in publications use:")
+);
 
-  textVersion  =
-  paste("Luis Meira-Machado, Javier Roca Pardinas (2011).",
-        "p3state.msm: Analyzing Survival Data from an Illness-Death Model.",
-        "Journal of Statistical Software, 38(3), 1-18.",
-        "URL http://www.jstatsoft.org/v38/i03/.")
-)
+title <- "Analyzing Survival Data from an Illness-Death Model";
+author <- personList(
+  as.person("Lu{\\'\\i}s Meira-Machado"),
+  as.person("Javier Roca-Pardi{\\~n}as"),
+  as.person("Artur Ara{\\'u}jo")
+);
+year <- sub(".*(2[[:digit:]]{3})-.*", "\\1", meta$Date, perl=TRUE);
+vers <- paste("R package version", meta$Version);
+url <- paste("https://CRAN.R-project.org/package=", PKG, sep="");
 
+citEntry(
+	entry       = "Manual",
+	title       = paste(PKG, ": ", title, sep=""),
+	author      = author,
+	year        = year,
+	note        = vers,
+	url         = url,
+	textVersion = paste(
+    "Luís Meira-Machado, Javier Roca-Pardiñas and Artur Araújo (", year, "). ",
+    PKG, ": ", title, ". ", vers, " URL ", url, sep=""
+  )
+);
+
+citEntry(
+  entry       = "Article",
+  title       = "p3state.msm: Analyzing Survival Data from an Illness-Death Model",
+  author      = personList(
+                  as.person("Lu\\'{\\i}s Meira-Machado"),
+                  as.person("Javier Roca Pardi\\~{n}as")
+                ),
+  journal     = "Journal of Statistical Software",
+  year        = "2011",
+  volume      = "38",
+  number      = "3",
+  pages       = "1--18",
+  doi         = "10.18637/jss.v038.i03",
+  textVersion = "Luis Meira-Machado, Javier Roca Pardinas (2011).
+    “p3state.msm: Analyzing Survival Data from an Illness-Death Model”.
+    Journal of Statistical Software, 38(3), 1-18. doi:10.18637/jss.v038.i03"
+);

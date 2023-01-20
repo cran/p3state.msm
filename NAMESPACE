@@ -1,3 +1,7 @@
+importFrom("grDevices", "colours", "devAskNewPage")
+importFrom("graphics", "filled.contour", "matplot", "persp")
+importFrom("stats", "as.formula", "na.exclude", "terms")
+importFrom("survival", "coxph", "survfit")
 exportPattern("^[^\\.]")
 S3method(plot, p3state)
 S3method(summary, p3state)

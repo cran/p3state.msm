@@ -48,13 +48,18 @@ pLIDA <- function (object, time1, time2, tp = NULL) {
         if (restp22 < 0) restp22 <- 0
         if (restp22 > 1) restp22 <- 1
     }
-    if (tp == "p11")
-        res <- restp11
-    if (tp == "p12")
-        res <- restp12
-    if (tp == "p22")
-        res <- restp22
-    if (tp == "all")
-        res <- list(restp11, restp12, restp22)
+    if (tp == "p11") {
+      res <- restp11
+      names(res)[1] <- "p11"
+    } else if (tp == "p12") {
+      res <- restp12
+      names(res)[1] <- "p12"
+    } else if (tp == "p22") {
+      res <- restp22
+      names(res)[1] <- "p22"
+    } else if (tp == "all") {
+      res <- list(restp11, restp12, restp22)
+      names(res) <- c("p11", "p12", "p22")
+    }
     return(res)
 }

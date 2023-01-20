@@ -1,7 +1,6 @@
 
 p3state <- function (data, coxdata = NULL, formula = NULL, regression = NULL)
 {
-    require(survival)
     if (missing(data))
         stop("Argument 'data' is missing with no default")
     if (!is.data.frame(data))
@@ -130,12 +129,12 @@ p3state <- function (data, coxdata = NULL, formula = NULL, regression = NULL)
             5] == 1), na.action = na.exclude)
         covar <- as.formula(paste(" Surv(coxdata[,3]-coxdata[,2],coxdata[,4])~ ",
             paste(fmla, collapse = "+")))
-        TMA <- coxph(Surv(stop, event) ~ start, data = coxdata,
-            subset = (coxdata[, 5] == 1))
-        TMA2 <- coxph(covar3, data = coxdata, subset = (coxdata[,
-            5] == 1))
-        csmm23 <- coxph(covar, data = coxdata, subset = (coxdata[,
-            5] == 1), na.action = na.exclude)
+        suppressWarnings(TMA <- coxph(Surv(start, stop, event) ~ start, data = coxdata,
+            subset = (coxdata[, 5] == 1)))
+        suppressWarnings(TMA2 <- coxph(covar3, data = coxdata, subset = (coxdata[,
+            5] == 1)))
+        suppressWarnings(csmm23 <- coxph(covar, data = coxdata, subset = (coxdata[,
+            5] == 1), na.action = na.exclude))
     }
     if (estimate == TRUE & regression == FALSE)
         object <- list(descriptives = descriptives, datafr = toplot)

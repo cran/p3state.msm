@@ -88,6 +88,3 @@
     names(coxdata) <- c(nomes2, names(data)[6:(ncol(data))])
     return(coxdata)
 }
-
-
-
